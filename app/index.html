@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en" prefix="og: http://ogp.me/ns#">
+<head>
+<!-- _                  _                                             _
+    | |                | |                                           | |
+    | |     __,        | |   ,_    __,   _  _    _   _  _     _  _   | |
+    |/ \   /  |  |   | |/_) /  |  /  |  / |/ |  |/  / |/ |   / |/ |  |/
+    |   |_/\_/|_/ \_/|/| \_/   |_/\_/|_/  |  |_/|__/  |  |_/o  |  |_/|__/
+                    /|
+                    \| -->
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Facebook tags -->
+    <meta property="og:title" content="">
+    <meta property="og:description" content="">
+    <meta property="og:url" content="http://projects.haykranen.nl/map/">
+    <meta property="og:image" content="http://projects.haykranen.nl/map/img/thumb.jpg">
+    <meta property="og:site_name" content="Hay Kranen">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@hayify">
+
+    <link rel="stylesheet" href="css/style.css">
+    <title>map &raquo; Hay Kranen</title>
+</head>
+<body>
+<body>
+    <main v-cloak>
+        <header class="header">
+            <h1>Cruising the Map</h1>
+            <h2>A <a href="https://hackersanddesigners.nl/s/Summer_Academy_2018/p/Hacking_The_Map">Hackers & Designers Summer Academy 2018 project</a></h2>
+            <h3>23.07.2018——24.07.2018</h3>
+        </header>
+
+        <ul class="grid"
+            v-show="state === 'grid'">
+            <li v-for="img in images">
+                <a v-bind:href="'#' + img.id">
+                    <img v-bind:src="img.src"
+                         v-bind:alt="img.desc" />
+                </a>
+            </li>
+        </ul>
+
+        <div class="detail"
+             v-show="state === 'detail'">
+
+             <div class="detail__close">
+                <a href="#">
+                    close &times;
+                </a>
+             </div>
+
+             <figure class="detail__view">
+                 <div>
+                    <img v-bind:src="img.fullsrc"
+                         v-bind:alt="img.desc" />
+                </div>
+
+                <figcaption>
+                    <h1>
+                        #{{img.id}}
+                        <span v-if="img.desc">— {{img.desc}}</span>
+                        <em v-else>No description</em>
+                    </h1>
+
+                    <article>
+                        <p v-if="!img.text"><em>No text</em></p>
+                        <template v-else>{{img.text}}</template>
+                    </article>
+                </figcaption>
+            </figure>
+        </div>
+
+        <footer class="footer">
+            <a href="https://github.com/hay/cruisemap">Code on Github</a>
+            |
+            <a href="http://hackthemap.kissr.com/index.html">Hacking the map</a>
+        </footer>
+    </main>
+
+    <script src="bundle.js"></script>
+
+    <!-- Google Analytics async snippet -->
+    <script>
+        window.ga=function(){ga.q.push(arguments)};ga.q=[];ga.l=+new Date;
+        ga('create','UA-15405780-12','auto');ga('send','pageview')
+    </script>
+    <script src="https://www.google-analytics.com/analytics.js" async defer></script>
+
+    <!-- Matomo -->
+    <script>
+        var _paq = _paq || [];
+        /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+        _paq.push(['trackPageView']);
+        _paq.push(['enableLinkTracking']);
+        (function() {
+            var u="//projects.haykranen.nl/stats/";
+            _paq.push(['setTrackerUrl', u+'piwik.php']);
+            _paq.push(['setSiteId', '1']);
+            var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+            g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
+        })();
+    </script>
+    <!-- End Matomo Code -->
+</body>
+</html>

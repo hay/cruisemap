@@ -1,0 +1,36 @@
+.detail {
+    &__close {
+        @include wh(100%, 6rem);
+        padding: $spacing;
+        font-size: 4rem;
+        text-transform: uppercase;
+        text-align: right;
+        margin-bottom: $spacing;
+    }
+
+    &__view {
+        display: flex;
+
+        > * {
+            padding: $spacing;
+        }
+
+        img {
+            max-width: 100%;
+        }
+
+        h1 {
+            margin-bottom: $spacing;
+        }
+
+        @include respond-until($screen-sm) {
+            flex-direction: column;
+        }
+
+        @include respond-from($screen-sm) {
+            > * {
+                width: 50%;
+            }
+        }
+    }
+}
